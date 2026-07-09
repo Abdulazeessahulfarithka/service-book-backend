@@ -14,9 +14,7 @@ export const registerUser = async(req,res)=>{
             })
         }
  // check existing user
- const existingUser = await User.findOne({
-    $or:[{email},{address}],
- })   
+ const existingUser = await User.findOne({email})   
  
    if(existingUser){
     return res.status(400).json({
@@ -51,8 +49,8 @@ const user = await User.create({
 export const loginUser = async(req,res)=>{
     try{
         const {email,password} = req.body;
-      if(!email || !password){
-        return res.status(400).json({
+      if(!email || !password){          
+        return res.status(404).json({
             success:false,
             message:"Email and password are required"
         })
@@ -80,13 +78,13 @@ export const loginUser = async(req,res)=>{
   res.status(200).json({
     sucess:false,
     message:"Login successful",
-    token,
     user:{
         id:user._id,
         name:user.name,
         email:user.email,
         address:user.address
-    }
+    },
+    token,
   })
 
     }catch (error) {
