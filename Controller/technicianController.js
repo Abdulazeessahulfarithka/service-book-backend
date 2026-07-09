@@ -1,4 +1,4 @@
-import Technician from "../models/Technician.js";
+import Technician from "../Model/Technician.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -11,15 +11,13 @@ export const registerTechnician = async (req, res) => {
       mobile,
       password,
       specialization,
-      experience,
+      experience,           
       address,
       city,
       pincode,
     } = req.body;
 
-    const technicianExists = await Technician.findOne({
-      $or: [{ email }, { mobile }],
-    });
+    const technicianExists = await Technician.findOne({email    });
 
     if (technicianExists) {
       return res.status(400).json({
