@@ -19,7 +19,7 @@ export const addSerivce = async (req,res) =>{
             price,
             image,
         })
-        rs.status(201).json({
+        res.status(201).json({
             success:true,   
             message:"Service added successfully",
             service,

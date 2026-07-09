@@ -1,5 +1,6 @@
 import Booking from "../Model/Booking.js";
 import Technician from "../Model/Technician.js";
+import sendEmail from "../Utils/sendEmail.js";
 
 // Create Booking
 export const createBooking = async (req, res) => {
@@ -8,9 +9,14 @@ export const createBooking = async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "Booking created successfully",
+      message: "Booking created successfully",  
       booking,
     });
+    await sendEmail(
+  booking.email,
+  "Booking Confirmation",
+  "Your appliance service booking has been confirmed."
+);                          
   } catch (error) {
     res.status(500).json({                  
       success: false,
