@@ -24,8 +24,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "http://localhost:5173",
-      "https://service-book-backend-1.onrender.com/", // replace later with your Vercel URL
+      "https://service-book-backend-2.onrender.com/", // replace later with your Vercel URL
     ],
     credentials: true,
   })
