@@ -23,10 +23,9 @@ import dotenv from "dotenv";
 app.use(
   cors({
     origin: [
-      "http://localhost:3000",
-      "https://service-book-backend-2.onrender.com/", // replace later with your Vercel URL
-    ],
-    credentials: true,
+  "http://localhost:3000",
+  "https://service-book-backend-2.onrender.com/",
+]
   })
 );
  
