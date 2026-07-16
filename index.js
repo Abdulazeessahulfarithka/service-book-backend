@@ -20,6 +20,17 @@ import dotenv from "dotenv";
  app.use(express.json())
  app.use(express.urlencoded({ extended: false }));
 
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "https://service-book-backend-1.onrender.com/", // replace later with your Vercel URL
+    ],
+    credentials: true,
+  })
+);
+ 
 const PORT = process.env.PORT || 5000;
 
 //routes
