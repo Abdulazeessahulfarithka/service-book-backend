@@ -22,11 +22,12 @@ db();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// CORS
 app.use(
   cors({
     origin: [
-      "http://localhost:3000", // Local React App
-      process.env.CLIENT_URL,  // Production Frontend URL
+      "http://localhost:3000",
+      "https://service-book-backend-2.onrender.com/" // Replace with your frontend URL
     ],
     credentials: true,
   })
@@ -43,7 +44,10 @@ app.use("/api/review", reviewRoute);
 
 // Test Route
 app.get("/", (req, res) => {
-  res.status(200).send("Hello World");
+  res.status(200).json({
+    success: true,
+    message: "Server is running successfully",
+  });
 });
 
 // Start Server
