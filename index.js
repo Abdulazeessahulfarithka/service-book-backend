@@ -27,7 +27,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://service-book-backend-2.onrender.com/" // Replace with your frontend URL
+      "https://your-frontend.onrender.com", // Replace with your frontend URL
     ],
     credentials: true,
   })
