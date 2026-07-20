@@ -23,15 +23,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // CORS
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "https://service-book-backend-3.onrender.com/", // Replace with your frontend URL
-    ],
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: [
+    "https://service-book-backend-3.onrender.com/", // Your Netlify domain
+    "http://localhost:3000"              // Local development
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 
 // Routes
 app.use("/api/user", userRoutes);
