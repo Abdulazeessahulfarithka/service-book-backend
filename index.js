@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: [
     "https://service-book-backend-3.onrender.com/", // Your Netlify domain
-    "http://localhost:3000"              // Local development
+    "http://localhost:3000"// Local development
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true

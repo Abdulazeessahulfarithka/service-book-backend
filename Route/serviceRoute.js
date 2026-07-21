@@ -1,9 +1,10 @@
 import express from "express"
-import { addSerivce } from "../Controller/serviceController.js"
+import { addSerivce, getAllService } from "../Controller/serviceController.js"
 
 const router = express.Router()
 
 router.post("/add",addSerivce)
+router.get("/getservice",getAllService)
 
 
 
