@@ -189,3 +189,16 @@ export const deleteTechnician = async (req, res) => {
     });
   }
 };
+export const technicianProfile = async (req, res) => {
+  try {
+    res.status(200).json({
+      success: true,
+      technician: req.technician,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

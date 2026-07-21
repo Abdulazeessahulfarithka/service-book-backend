@@ -19,7 +19,7 @@ router.post("/create", requireSignIn, createBooking);
 router.get("/my-bookings", requireSignIn, getMyBookings);
 router.get("/all", getAllBookings);
 router.get("/:id", getBookingById);
-router.put("/assign/:id", assignTechnician);
+router.put("/assign-technician", assignTechnician);
 router.put("/status/:id", updateBookingStatus);
 router.put("/cancel/:id", cancelBooking);
 router.delete("/delete/:id", deleteBooking);

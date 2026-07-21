@@ -93,9 +93,19 @@ export const getMyBookings = async (req, res) => {
 };
 
 // Assign Technician
+
 export const assignTechnician = async (req, res) => {
   try {
-    const { technicianId } = req.body;
+    const { bookingId, technicianId } = req.body;
+
+    const booking = await Booking.findById(bookingId);
+
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: "Booking not found",
+      });
+    }
 
     const technician = await Technician.findById(technicianId);
 
@@ -106,14 +116,10 @@ export const assignTechnician = async (req, res) => {
       });
     }
 
-    const booking = await Booking.findByIdAndUpdate(
-      req.params.id,
-      {
-        technician: technicianId,
-        bookingStatus: "Assigned",
-      },
-      { new: true }
-    );
+    booking.technician = technicianId;
+    booking.bookingStatus = "Assigned";
+
+    await booking.save();
 
     res.status(200).json({
       success: true,

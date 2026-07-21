@@ -7,7 +7,10 @@ import {
   getTechnicianById,
   updateTechnician,
   deleteTechnician,
+  technicianProfile,
 } from "../Controller/technicianController.js";
+import technicianAuth from "../Middleware/technicianAuth.js";
+
 
 const router = express.Router();
 
@@ -29,4 +32,5 @@ router.put("/update/:id", updateTechnician);
 // Delete Technician
 router.delete("/delete/:id", deleteTechnician);
 
+router.get("/profile",technicianAuth,technicianProfile)
 export default router;

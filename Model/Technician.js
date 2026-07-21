@@ -23,7 +23,6 @@ const technicianSchema = new mongoose.Schema(
 
     password: {
       type: String,
-      required: true,
     },
 
     specialization: [
